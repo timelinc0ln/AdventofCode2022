@@ -1,0 +1,20 @@
+data = open('sacks.txt', 'r').read().split("\n")
+
+total = 0
+
+for i in range(0,len(data),3):
+    a = set(data[i])
+    b = set(data[i+1])
+    c = set(data[i+2])
+    temp = (a & b & c)
+    d = list(temp)[0]
+
+    if d.islower():
+        a = [ord(d) - 96 for c in d]
+        total += a[0]
+        
+    if d.isupper():
+        a = [ord(d) - 64 for c in d]
+        total += a[0] + 26
+
+print(total)
